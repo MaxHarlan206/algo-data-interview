@@ -24,3 +24,13 @@ Then it iterates over all values after the first integer, finds the lowest value
 ## Bubble sort
 [YouTube Tutorial](https://www.youtube.com/watch?v=g_xesqdQqvA)<br>
 The bubble sort algorithm repeatedly iterates over pairs of values in an array of numbers and swaps them whenever it finds a higher value occuring earlier in the list. 
+## Nth Fibonacci 
+[YouTube Tutorial](https://www.youtube.com/watch?v=JRhNi7a3zeI)<br>
+The goal here is to find the Nth Fibonacci number. The fibonacci sequence is 0, 1, and then all subsequent digits are the sum of the previous two. 
+## Monotonic array 
+[YouTube Tutorial](https://www.youtube.com/watch?v=eZPwlEWMMtM)<br>
+Determine if an array is monotonic (strictly increasing with plateaus, or strictly decreasing with plateus) 
+## Spiral traverse a matrix 
+[YouTube Tutorial](https://www.youtube.com/watch?v=x8b5KloiBhc)<br>
+Starting at the top left corner of a list of lists, move in a spiral fasion and return a one dimensional array of the values in this path. 
+There are many tempting but overcomplicated solutions to this one.
