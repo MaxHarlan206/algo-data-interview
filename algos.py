@@ -75,3 +75,113 @@ def bubbleSort(array):
 			return array
 			break
 
+# NTH FIBONACCI 
+# O(n) time O(1) space
+def getNthFib(n):
+	constants = [0,1]
+	if n == 1 or n == 2:
+		return constants[n-1]
+	if n == 3:
+		return sum(constants)
+	else: 
+		for num in range(n-3):
+			newconstants = [0,0]
+			newconstants[0] = constants[1]
+			newconstants[1] = sum(constants)
+			constants = newconstants
+		return sum(constants)
+	
+#Move all instances of an integer to the end of a list (in place) without using the sort algorithm 
+# O(n) time O(1) space 
+def moveElementToEnd(array, toMove):
+	if len(array) < 2:
+		return array
+	else:
+		lpointer = 0 
+		rpointer = len(array)-1
+	while lpointer < len(array)-1 and rpointer >0 and lpointer < rpointer:
+		if array[lpointer] != toMove:
+			lpointer += 1 
+		if array[rpointer] == toMove:
+			rpointer -= 1
+		if array[lpointer] == toMove and array[rpointer] != toMove:
+			swapnums(lpointer, rpointer, array)
+			lpointer += 1 
+			rpointer -= 1
+	return array
+def swapnums(lpointer, rpointer, array):
+	array[lpointer], array[rpointer] = array[rpointer], array[lpointer]
+
+# Check if an array is monotonic
+# O(n) time O(1) space 
+def isMonotonic(array):
+	ismonotonic = True 
+	if len(array) < 2:
+		return ismonotonic
+	else:
+		lpoint = 0
+		rpoint = 1 
+	avoiddirection = None
+	while avoiddirection == None and rpoint < len(array) - 1:
+		if array[lpoint] == array[rpoint]:
+			lpoint += 1
+			rpoint += 1
+		elif array[lpoint] < array[rpoint]:
+			avoiddirection = "decrease"
+		else: 
+			avoiddirection = "increase"
+	while rpoint < len(array):
+		if array[lpoint] < array[rpoint]:
+			currdirection = "increase"
+			lpoint +=1
+			rpoint +=1
+		elif array[lpoint] > array[rpoint]:
+			currdirection = "decrease"
+			lpoint +=1
+			rpoint +=1
+		else:
+			currdirection = ""
+			lpoint +=1
+			rpoint +=1
+		if currdirection == avoiddirection:
+			ismonotonic = False
+			break
+	return ismonotonic
+# Spiral traversing a list of lists
+# O(n) Space-time 
+def spiralTraverse(array):
+    x = -1
+	y = 0
+	remwidth = len(array[0])
+	remheight = len(array)
+	spiral_array = []
+	
+	print(array)
+	while remwidth > 0 and remheight > 0:
+		# iterate right
+		for i in range(remwidth):
+			x += 1
+			spiral_array.append(array[y][x])
+		remheight -= 1 
+		if remheight == 0:
+			break
+		# iterate down
+		for i in range(remheight):
+			y += 1
+			spiral_array.append(array[y][x])
+		remwidth -= 1
+		if remwidth == 0:
+			break
+		# iterate left
+		for i in range(remwidth):
+			x -= 1
+			spiral_array.append(array[y][x])
+		remheight -= 1 
+		if remheight == 0:
+			break
+		# iterate up 
+		for i in range(remheight):
+			y -= 1
+			spiral_array.append(array[y][x])
+		remwidth -= 1
+	return spiral_array
